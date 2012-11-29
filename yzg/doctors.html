@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, target-densitydpi=device-dpi, initial-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>北京玉之光整形美容医院</title>
+
+  <!--
+  <link rel="apple-touch-icon" href="bjyzg-icon.png" />
+  <link rel="apple-touch-startup-image" href="bjyzg-startup-image.png" />
+  -->
+  <link rel="stylesheet" href="css/style-320.css" media="only screen and (max-width: 320px)"/>
+  <link rel="stylesheet" href="css/style-640.css" media="screen and (min-width: 321px)"/>
+  <link rel="stylesheet" href="css/style-retina.css" media="only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 480px)"/>
+</head>
+
+<body class="no-footer">
+  <div id="header">
+    <div class="header-wrap">
+      <h1 class="page-name">专家团队</h1>
+    </div>
+  </div>
+
+  <div id="wrapper">
+    <div class="content">
+      <div class="inner-wrapper">
+
+      </div>
+    </div>
+  </div>
+
+  <div style="height:0;display:none;">
+    <script src="http://s15.cnzz.com/stat.php?id=4661649&web_id=4661649&show=pic1" language="JavaScript"></script>
+  </div>
+
+  <script src="js/lib/zepto.min.js"></script>
+  <script src="js/lib/zepto.scroll.js"></script>
+  <script src="js/lib/mustache.js"></script>
+  <script src="js/setup.js"></script>
+  <script>
+    var dataApi = 'api/doctors.json'
+      , tmpl = $('<div></div>').append($('.doctor-intro').removeClass('hide')).html()
+
+    function render(data) {
+      var html = []
+
+      $.each(data, function(i, it) {
+        var jobTitle = it.jobTitle ? { text: it.jobTitle, style: 'doctor-title blue' } : it.jobTitle
+        
+        for(var i = it.title.length - 1; i >= 0; i--) {
+          it.title[i].style = 'doctor-title'
+        }
+
+        var desc = [].concat(jobTitle, it.title, it.desc)
+
+        for(var i = desc.length - 1; i >= 0; i--) {
+          if (typeof desc[i] == 'string') {
+            desc[i] = { text: desc[i] }
+          } else if(typeof desc[i] == 'undefined') {
+            desc.splice(i, 1)
+          }
+        }
+
+        it.desc = desc
+
+        html.push(Mustache.render(tmpl, it))
+      })
+
+      $('.inner-wrapper').append(html.join(''))
+    }
+
+    function copyAttr(el, attr, to, fn) {
+      el.each(function() {
+        var val = fn ? fn($(this).attr(attr)) : $(this).attr(attr)
+
+        if (!!val || val === 0) {
+          $(this).attr(to, val)
+        }
+      })
+    }
+
+    function scrollToBoard(evt) {
+      var el = $(this).closest('.doctor-intro')
+        , form = el.find('.msg-form').removeClass('hide')
+      
+      el.find('.list-content').removeClass('hide')
+      $.scroll(form.offset().top - $('#header').height() - 20, 600, null, function() {
+        form.find('[name=name]')[0].focus()
+      })
+      evt.stopPropagation()
+      return false
+    }
+
+    $('.inner-wrapper').on('click', '.icon-message', scrollToBoard)
+    $('.content').on('click', '.doctor-name', function(evt) {
+      var el = $(evt.currentTarget).closest('.doctor-intro')
+        , content = el.find('.list-content')
+
+      content.toggleClass('hide')
+    })
+    
+    $(document).on('click', '[name=submit]', function(evt) {
+      var el = $(evt.currentTarget).closest('.msg-form')
+        , data = {
+            name: $.trim(el.find('[name=name]').val())
+          , tel: $.trim(el.find('[name=tel]').val())
+          , msg: $.trim(el.find('[name=msg]').val())
+          , toName: el.find('[name=toName]').val()
+          , siteId: el.find('[name=siteId]').val()
+          }
+
+      if (data.name && data.tel && data.msg) {
+        /*
+        $.ajaxJSONP({
+          url: 'http://42.121.106.226:777/moweb/contact?callback=?'
+        , data: data
+        , success: function(response) {
+            alert('提交成功')
+            el.find('input, textarea').val('')
+          }
+        })
+        */
+
+        // cross domain error
+        $.post('http://42.121.106.226:777/moweb/contact', data, function() {})
+        alert('提交成功')
+      }
+    })
+
+    $P.setup()
+
+    $.getJSON(dataApi, function(data) {
+      render(data)
+
+      var imgs = $('.doctor-name img')
+        , width = Math.min($(window).width(), $(window).height())
+      
+      if (width <= 320) {
+        copyAttr(imgs, 'width', 'width', function(x) { return Math.round(parseInt(x) / 2) })
+        copyAttr(imgs, 'height', 'height', function(x) { return Math.round(parseInt(x) / 2) })
+      }
+      copyAttr(imgs, 'data-src', 'src')
+      $($('.list-content')[0]).removeClass('hide')
+    })
+
+  </script>
+</body>
+</html>

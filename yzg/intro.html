@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, target-densitydpi=device-dpi, initial-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>北京玉之光整形美容医院</title>
+
+  <!--
+  <link rel="apple-touch-icon" href="bjyzg-icon.png" />
+  <link rel="apple-touch-startup-image" href="bjyzg-startup-image.png" />
+  -->
+  <link rel="stylesheet" href="css/style-320.css" media="only screen and (max-width: 320px)"/>
+  <link rel="stylesheet" href="css/style-640.css" media="screen and (min-width: 321px)"/>
+  <link rel="stylesheet" href="css/style-retina.css" media="only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 480px)"/>
+</head>
+
+<body class="no-footer intro-page">
+  <div id="header">
+    <div class="header-wrap">
+      <h1 class="page-name">医院介绍</h1>
+    </div>
+  </div>
+
+  <div id="wrapper">
+    <div class="content">
+      <div class="inner-wrapper">
+
+        <div class="lace-box">        
+          <div class="photos slider-wrap">     
+            <div class="slider">
+              <!--<div class="slider-item"></div>-->
+            </div>
+          </div>
+          <div class="thumbnails slider-wrap">
+            <div class="slider">
+              <!--<li class="slider-item"></li>-->
+            </div>
+          </div>
+        </div>
+
+        <div class="intro"><img width="100%" src="img/intro.png" alt=""></div>
+
+      </div>
+    </div>
+  </div>
+
+  <div style="height:0;display:none;">
+    <script src="http://s15.cnzz.com/stat.php?id=4661649&web_id=4661649&show=pic1" language="JavaScript"></script>
+  </div>
+
+  <script src="js/lib/zepto.min.js"></script>
+  <script src="js/lib/zepto.flickable.min.js"></script>
+  <script src="js/setup.js"></script>
+  <script>
+    var images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg"]
+      , link = {
+          "url": "tel:" + customServiceNumber
+        , "width": 275
+        , "height": 55
+        , "left": 172
+        , "top": 278
+        }
+
+    function Slider(options) {
+      this.segment = 0
+      this.timeout = 10
+      this.auto = true
+
+      $.extend(this, options)
+
+      var _t = this
+
+      this.$el.flickable({
+        segments: this.segments
+      , preventDefault: false
+      , onScroll: function(evt, segment) {
+          _t.auto && _t.reset(segment);
+
+          options.onScroll && options.onScroll(evt, segment)
+        }
+      })
+    }
+
+    $.extend(Slider.prototype, {
+      next: function() {
+        this.segment++;
+        if (this.segment >= this.segments) {
+          this.segment = 0
+        }
+
+        this.$el.flickable('segment', this.segment)
+        return this.reset()
+      }
+    , scrollTo: function(segment) {
+        this.$el.flickable('segment', segment)
+      }
+    , reset: function(segment) {
+        this._toid && clearTimeout(this._toid);
+
+        if (typeof segment == 'number') {
+          this.segment = segment
+        }
+
+        var _t = this
+
+        this._toid = setTimeout(function() {
+          _t.next()
+        }, this.timeout * 1000)
+        return this
+      }
+    })
+
+    function resizeSlider(el, sliderSize, length, segments) {
+      var screenWidth = Math.min(screen.width, screen.height, 640)
+        , ratio = screenWidth / 640
+        , x = function(i) { return Math.round(i * ratio) }
+        , size = {
+            width: x(sliderSize.width)
+          , height: x(sliderSize.height)
+          }
+        , visuals = Math.ceil(length / segments)
+        , innerWidth = size.width * visuals
+        , padding = Math.round((screenWidth - innerWidth) / (visuals * 2))
+
+      el.css({
+        width: Math.max(innerWidth, screenWidth) + 'px'
+      , height: (size.height + padding * 2) + 'px'
+      })
+
+      el.find('.slider-item, .slider-item img').css({
+        width: size.width + 'px'
+      , height: size.height + 'px'
+      })
+
+      if (screenWidth > innerWidth) {
+        el.find('.slider-item').css({ padding: padding + 'px' })
+      }
+
+      el.find('.slider').css({
+        width: ((size.width + (padding * 2)) * visuals * segments) + 'px'
+      , height: (size.height + padding * 2) + 'px'
+      })
+    }
+
+    function setupImages(images) {
+      var photos = []
+        , thumbnails = []
+      
+      $.each(images, function(i, it) {
+        photos.push('<div class="slider-item"><img src="img/intro/' + it + '" /></div>')
+        thumbnails.push('<div class="slider-item"><img src="img/intro/thumbnail-' + it + '" /></div>')
+      })
+
+      thumbnails.push('<div class="slider-item">&nbsp;</div>')
+
+      $('.photos .slider').html(photos.join(''))
+      $('.thumbnails .slider').html(thumbnails.join(''))
+
+      resizeSlider($('.photos')
+        , { width: 640, height: 381 }
+        , images.length
+        , 7)
+      resizeSlider($('.thumbnails')
+        , { width: 150, height: 89 }
+        , images.length
+        , 2)
+
+      var thumbnailSlider = new Slider({
+        $el: $('.thumbnails .slider')
+      , segments: 2
+      , auto: false
+      })
+
+      var photoSlider = new Slider({
+        $el: $('.photos .slider')
+      , segments: 7
+      , timeout: 3
+      , onScroll: function(evt, segment) {
+          thumbnailSlider.scrollTo(Math.floor(segment / 4))
+        }
+      }).reset()
+
+      $(document).on('click', '.slider-item img', function(evt) {
+        var el = $(evt.currentTarget).parent()
+          , count = 0
+
+        while(el.prev().length > 0) {
+          el = el.prev()
+          count++
+        }
+
+        photoSlider.scrollTo(count)
+      })
+    }
+
+    $P.setup()
+
+    $(function() {  
+      setupImages(images)
+      $('.intro').append(createLink(link))
+      resizeLink($('.intro a'))
+
+      $(window).on('resize', function() {
+        setTimeout(function() {
+          resizeLink($('.intro a'))
+        }, 200)
+      })
+    })
+  </script>
+</body>
+</html>

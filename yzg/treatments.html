@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, target-densitydpi=device-dpi, initial-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>北京玉之光整形美容医院</title>
+
+  <!--
+  <link rel="apple-touch-icon" href="bjyzg-icon.png" />
+  <link rel="apple-touch-startup-image" href="bjyzg-startup-image.png" />
+  -->
+  <link rel="stylesheet" href="css/style-320.css" media="only screen and (max-width: 320px)"/>
+  <link rel="stylesheet" href="css/style-640.css" media="screen and (min-width: 321px)"/>
+  <link rel="stylesheet" href="css/style-retina.css" media="only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 480px)"/>
+</head>
+
+<body>
+  <div id="header">
+    <div class="header-wrap">
+      <h1 class="page-name">整形项目</h1>
+    </div>
+  </div>
+
+  <div id="wrapper">
+    <div class="content">
+      <div class="inner-wrapper">
+
+        <div class="category hide">
+          <div class="list-menu">
+            <div class="category-name">
+              <div class="icon-cat-{{key}}">{{name}}</div>
+            </div>
+          </div>
+          <div class="list-content">
+            <ul class="nav-list treatments">
+              {{#items}}
+              <li>
+                <a href="javascript:;" data-url="treatment.html#{{id}}">              
+                  <div class="text">{{name}}</div>
+                  <i class="icon-arrow-right"></i>
+                </a>
+              </li>
+              {{/items}}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    <ul class="links">
+      <li><a href="#"><span class="icon-footer-zxly">咨询留言</span></a></li>
+      <li class="active"><a href="treatments.html"><span class="icon-footer-zxxm">整形项目</span></a></li>
+      <li><a href="index.html"><span class="icon-footer-index">首页</span></a></li>
+      <li><a href="doctors.html"><span class="icon-footer-zjtd">专家团队</span></a></li>
+      <li><a href="intro.html"><span class="icon-footer-yyjs">医院介绍</span></a></li>
+    </ul>
+  </div>
+
+  <div style="height:0;display:none;">
+    <script src="http://s15.cnzz.com/stat.php?id=4661649&web_id=4661649&show=pic1" language="JavaScript"></script>
+  </div>
+
+  <script src="js/lib/zepto.min.js"></script>
+  <script src="js/lib/mustache.js"></script>
+  <script src="js/setup.js"></script>
+  <script>
+    var tmpl = $('<div></div>').append($('.category').removeClass('hide')).html()
+
+    function render(data) {
+      var html = []
+
+      $.each(data, function(i, it) {
+        it.key = i + 1
+
+        html.push(Mustache.render(tmpl, it))
+      })
+
+      $('.inner-wrapper').append(html.join(''))
+    }
+
+    function copyAttr(el, attr, to, fn) {
+      el.each(function() {
+        var val = fn ? fn($(this).attr(attr)) : $(this).attr(attr)
+
+        if (!!val || val === 0) {
+          $(this).attr(to, val)
+        }
+      })
+    }
+
+    $P.setup()
+
+    $.getJSON('api/treatments.json', function(data) {    
+      render(data)
+      copyAttr($('.treatments a'), 'data-url', 'href')
+    })
+  </script>
+</body>
+</html>
