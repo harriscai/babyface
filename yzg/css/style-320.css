@@ -1,0 +1,566 @@
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+audio:not([controls]) {
+  display: none;
+}
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+a:hover,
+a:active {
+  outline: 0;
+}
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  /* Responsive images (ensure images don't scale beyond their parents) */
+
+  max-width: 100%;
+  /* Part 1: Set a maxium relative to the parent */
+
+  width: auto\9;
+  /* IE7-8 need help adjusting responsive images */
+
+  height: auto;
+  /* Part 2: Scale the height according to the width, otherwise you get stretching */
+
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+#map_canvas img {
+  max-width: none;
+}
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font-size: 100%;
+  vertical-align: middle;
+}
+button,
+input {
+  *overflow: visible;
+  line-height: normal;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+input[type="search"] {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+body {
+  background: url(../img/bg-page.png);
+  margin: 0;
+  padding: 0;
+}
+#header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  background: url(../img/bg-header.png) repeat-x;
+  background-size: 10px 48px;
+  padding: 0;
+}
+#header .btn-back {
+  position: absolute;
+  top: 4px;
+  left: 10px;
+}
+#header .btn-call {
+  position: absolute;
+  top: 4px;
+  right: 10px;
+}
+.header-wrap {
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+}
+.page-name {
+  color: #fff;
+  line-height: 48px;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-shadow: 0 1px 6px #333333, 0 -1px 6px #333333, 1px 0 6px #666666, -1px 0 6px #666666;
+}
+.btn-back,
+.btn-call {
+  display: inline-block;
+  height: 40px;
+  *margin-right: .3em;
+  line-height: 48px;
+  vertical-align: text-top;
+  background-image: url("../img/btn-header.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+}
+.btn-back {
+  width: 54px;
+  background-position: 0 -4px;
+  background-size: 100px 48px;
+}
+.btn-call {
+  width: 44px;
+  background-position: -53px -4px;
+  background-size: 100px 48px;
+}
+#footer {
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  background: url(../img/bg-footer.png) repeat-x;
+  background-size: 10px 48px;
+  padding: 0;
+}
+#footer .links {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 0;
+}
+#footer .links li {
+  list-style: none;
+  float: left;
+  text-align: center;
+  width: 20%;
+}
+#footer .links a {
+  display: block;
+  text-align: center;
+}
+#footer .links .active a,
+#footer .links a:hover {
+  background: url(../img/bg-footer-link.png) no-repeat center center;
+  background-size: 44px 44px;
+}
+#footer .links a span {
+  text-indent: -9999px;
+}
+#wrapper {
+  margin: 48px 0 48px 0;
+  z-index: 1;
+  width: 100%;
+  overflow: auto;
+}
+.no-header #wrapper {
+  margin-top: 0;
+}
+.no-footer #wrapper {
+  margin-bottom: 0;
+}
+#msg {
+  position: fixed;
+  top: 48px;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  z-index: 100;
+  width: 100%;
+}
+#msg > div {
+  padding: 5px 20px;
+  color: #fff;
+  text-shadow: 0 0px 2px #000;
+}
+/*
+ * Index
+ */
+.inner-wrapper {
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+}
+.lace-box {
+  background: url(../img/bg-banner.png) repeat-x 0 bottom;
+  background-size: 33px 9px;
+  padding-bottom: 9px;
+  position: relative;
+  z-index: 10;
+}
+.slider-wrap {
+  overflow: hidden;
+  margin: 0 auto;
+}
+.slider {
+  min-height: 200px;
+}
+.slider-item {
+  position: relative;
+  display: block;
+  float: left;
+}
+.slider-item a {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-indent: -9999px;
+}
+.preface {
+  margin: 5px 0 15px;
+  padding: 5px 15px;
+  font-size: 12px;
+}
+.preface .preface-wrap {
+  background-color: #f6e0c6;
+  border: 1px solid #ffffff;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0 5px #999999;
+  -moz-box-shadow: 0 0 5px #999999;
+  box-shadow: 0 0 5px #999999;
+  color: #3d3d3d;
+  line-height: 1.5em;
+  padding: 12px 7px 10px;
+  position: relative;
+  text-indent: 2em;
+}
+.preface .preface-wrap:after {
+  content: " ";
+  display: inline-block;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  background: url("../img/bg-preface.png");
+  background-size: 27px 21px;
+  width: 27px;
+  height: 21px;
+}
+.showcase {
+  display: block;
+  *zoom: 1;
+  margin: 0 10px;
+  padding: 0;
+}
+.showcase:before,
+.showcase:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.showcase:after {
+  clear: both;
+}
+.showcase li {
+  display: inline-block;
+  float: left;
+  width: 25%;
+}
+.showcase a {
+  display: block;
+  padding: 5px 1px;
+}
+.content .links {
+  margin: 10px;
+  padding: 0;
+}
+.content .links li {
+  list-style: none;
+  border-bottom: 1px solid #d5d4d1;
+  border-top: 1px solid #fff;
+}
+.content .links li:first-child {
+  border-top: 0;
+}
+.content .links li:last-child {
+  border-bottom: 0;
+}
+.content .links a {
+  color: #161616;
+  display: block;
+  line-height: 28px;
+  font-size: 12px;
+  position: relative;
+  text-decoration: none;
+}
+.content .links a:hover {
+  text-decoration: none;
+}
+.content .links a:hover .icon-arrow-right {
+  right: 3px;
+}
+.content .links .icon-chengxin,
+.content .links .icon-zhenggui,
+.content .links .icon-26nian {
+  margin: 0 5px 0 0;
+  vertical-align: middle;
+  margin-top: 0;
+}
+.content .links .icon-arrow-right {
+  position: absolute;
+  right: 6px;
+  top: 7px;
+}
+.intro-page .thumbnails {
+  border-top: 1px solid #ffffff;
+}
+.intro-page .thumbnails .slider-item {
+  background: #f6e0c6;
+}
+.intro {
+  position: relative;
+  margin-top: -10px;
+  z-index: 1;
+}
+.intro a {
+  position: absolute;
+  text-indent: -9999px;
+}
+.list-menu {
+  background: url("../img/bg-intro-menu.png") repeat-x;
+  height: 44px;
+  position: relative;
+}
+.landing-page {
+  position: relative;
+}
+.landing-page a {
+  position: absolute;
+  text-indent: -9999px;
+}
+.hide {
+  display: none;
+}
+.icon-chengxin,
+.icon-zhenggui,
+.icon-26nian {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  *margin-right: .3em;
+  line-height: 28px;
+  vertical-align: text-top;
+  background-image: url("../img/icon-index-link.png");
+  background-position: 0 0;
+  background-size: 28px 84px;
+  background-repeat: no-repeat;
+}
+.icon-zhenggui {
+  background-position: 0 -28px;
+}
+.icon-26nian {
+  background-position: 0 -56px;
+}
+.icon-arrow-up,
+.icon-arrow-down,
+.icon-arrow-left,
+.icon-arrow-right {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  *margin-right: .3em;
+  line-height: 13px;
+  vertical-align: text-top;
+  background-image: url("../img/icon-arrow.png");
+  background-position: 0 0;
+  background-size: 80px 50px;
+  background-repeat: no-repeat;
+}
+.icon-arrow-down {
+  background-position: -13px 0;
+}
+.icon-arrow-left {
+  background-position: -26px 0;
+}
+.icon-arrow-right {
+  background-position: -39px 0;
+}
+.icon-footer-zxly,
+.icon-footer-index,
+.icon-footer-zjtd,
+.icon-footer-zxxm,
+.icon-footer-yyjs {
+  display: inline-block;
+  width: 44px;
+  height: 48px;
+  *margin-right: .3em;
+  line-height: 48px;
+  vertical-align: text-top;
+  background-image: url("../img/icon-footer-link.png");
+  background-position: 0 0;
+  background-size: 220px 48px;
+  background-repeat: no-repeat;
+}
+.icon-footer-index {
+  background-position: -44px 0;
+}
+.icon-footer-zjtd {
+  background-position: -88px 0;
+}
+.icon-footer-zxxm {
+  background-position: -132px 0;
+}
+.icon-footer-yyjs {
+  background-position: -176px 0;
+}
+.icon-message {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  *margin-right: .3em;
+  line-height: 28px;
+  vertical-align: text-top;
+  background-image: url("../img/icon-message.png");
+  background-position: 0 0;
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+}
+.icon-home,
+.icon-tel,
+.icon-email,
+.icon-bus,
+.icon-metro,
+.icon-drive,
+.icon-heart {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  *margin-right: .3em;
+  line-height: 15px;
+  vertical-align: text-top;
+  background-image: url("../img/sprites.png");
+  background-position: 0 0;
+  background-size: 105px 15px;
+  background-repeat: no-repeat;
+}
+.icon-tel {
+  background-position: -15px 0;
+}
+.icon-email {
+  background-position: -30px 0;
+}
+.icon-bus {
+  background-position: -45px 0;
+}
+.icon-metro {
+  background-position: -60px 0;
+}
+.icon-drive {
+  background-position: -75px 0;
+}
+.icon-heart {
+  background-position: -90px 0;
+}
+.icon-cat-1,
+.icon-cat-2,
+.icon-cat-3,
+.icon-cat-4,
+.icon-cat-5 {
+  display: inline-block;
+  width: 150px;
+  height: 44px;
+  *margin-right: .3em;
+  line-height: 44px;
+  vertical-align: text-top;
+  background-image: url("../img/icon-category.png");
+  background-position: -10px 0;
+  background-size: 150px 225px;
+  background-repeat: no-repeat;
+}
+.icon-cat-2 {
+  background-position: -10px -45px;
+}
+.icon-cat-3 {
+  background-position: -10px -90px;
+}
+.icon-cat-4 {
+  background-position: -10px -135px;
+}
+.icon-cat-5 {
+  background-position: -10px -180px;
+}
