@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>北京玉之光整形美容医院</title>
+
+  <!--
+  <link rel="apple-touch-icon" href="bjyzg-icon.png" />
+  <link rel="apple-touch-startup-image" href="bjyzg-startup-image.png" />
+  -->
+  <link rel="stylesheet" href="css/style-320.css" media="only screen and (max-width: 320px)"/>
+  <link rel="stylesheet" href="css/style-640.css" media="screen and (min-width: 321px)"/>
+  <link rel="stylesheet" href="css/style-retina.css" media="only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 480px)"/>
+</head>
+
+<body>
+  <div id="header">
+    <div class="header-wrap">
+      <h1 class="page-name">北京玉之光整形美容医院</h1>
+    </div>
+  </div>
+
+  <div id="wrapper">
+    <div class="content">
+      <div class="inner-wrapper">
+        <div class="slider-wrap lace-box">
+          <div class="slider">
+            <!--
+            <div class="slider-item">
+              <img src="img/banner.jpg" alt="因“改变”而美 感恩10周年" />
+              <a class="hide" href="javascript:alert('Calling 400-818-3838')">4008183838</a>
+              <a class="hide" href="javascript:alert('跳转 至 详情进入')">详情进入</a>
+            </div>
+            -->
+          </div>
+        </div>
+
+        <ul class="showcase">
+          <li>
+            <a href="landing.html#qing-chun-you-yue">
+              <img width="100%" src="img/showcase-01.png">
+            </a>
+          </li>
+          <li>
+            <a href="landing.html#ming-xing-xiao-lian">
+              <img width="100%" src="img/showcase-02.png">
+            </a>
+          </li>
+          <li>
+            <a href="landing.html#gao-ting-bi-zi">
+              <img width="100%" src="img/showcase-03.png">
+            </a>
+          </li>
+          <li>
+            <a href="landing.html#mi-ren-dian-yan">
+              <img width="100%" src="img/showcase-04.png">
+            </a>
+          </li>
+          <li>
+            <a href="landing.html#jian-ting-mei-ru">
+              <img width="100%" src="img/showcase-05.png">
+            </a>
+          </li>
+          <li>
+            <a href="landing.html#xing-gan-mei-tui">
+              <img width="100%" src="img/showcase-06.png">
+            </a>
+          </li>
+          <li>
+            <a href="landing.html#xing-fu-mei-bai">
+              <img width="100%" src="img/showcase-07.png">
+            </a>
+          </li>
+          <li>
+            <a href="landing.html#wan-zheng-nv-ren">
+              <img width="100%" src="img/showcase-08.png">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <ul class="links">
+      <li><a href="guestbook.html"><span class="icon-footer-zxly">咨询留言</span></a></li>
+      <li><a href="treatments.html"><span class="icon-footer-zxxm">整形项目</span></a></li>
+      <li class="active"><a href="index.html"><span class="icon-footer-index">首页</span></a></li>
+      <li><a href="doctors.html"><span class="icon-footer-zjtd">专家团队</span></a></li>
+      <li><a href="intro.html"><span class="icon-footer-yyjs">医院介绍</span></a></li>
+    </ul>
+  </div>
+  <div style="height:0;display:none;">
+    <script src="http://s15.cnzz.com/stat.php?id=4661649&web_id=4661649&show=pic1" language="JavaScript"></script>
+  </div>
+
+  <script src="js/lib/zepto.min.js"></script>
+  <script src="js/lib/zepto.flickable.min.js"></script>
+  <script src="js/setup.js?v=3"></script>
+  <script>
+    var phoneNumber = 'tel:4008183838'
+    var images = [
+          {
+            "img": "img/banner.jpg"
+          , "name": ""
+          , "links": [
+              {
+                "url": "landing.html#xiang-yue-ai-bei-fu"
+              , "width": 640
+              , "height": 407
+              , "top": 0
+              , "left": 0
+              }
+            , {
+                "url": phoneNumber
+              , "width": 185
+              , "height": 50
+              , "top": 342
+              , "left": 397
+              }
+            ]
+          }
+        , {
+            "img": "img/banner-1.jpg"
+          , "links": [
+              {
+                "url": "landing.html#fu-rui-shi"
+              , "width": 640
+              , "height": 407
+              , "top": 0
+              , "left": 0
+              }
+            , {
+                "url": phoneNumber
+              , "width": 185
+              , "height": 50
+              , "top": 329
+              , "left": 422
+              }
+            ]
+          }
+        , {
+            "img": "img/banner-2.jpg"
+          , "name": "因“改变”而美 感恩10周年"
+          , "links": [
+              {
+                "url": "landing.html#gan-en-10-zhou-nian"
+              , "width": 640
+              , "height": 407
+              , "top": 0
+              , "left": 0
+              }
+            , {
+                "url": phoneNumber
+              , "width": 253
+              , "height": 70
+              , "top": 298
+              , "left": 338
+              }
+            ]
+          }
+        ]
+      , sliderSize = {
+          width: 640
+        , height: 407
+        }
+
+    var slider = {
+      segment: 0
+    , max: 2
+    , timeout: 3 // second
+    , _toid: null
+    , next: function() {
+        this.segment++;
+        if (this.segment > this.max) {
+          this.segment = 0
+        }
+        this.$el.flickable('segment', this.segment)
+        this.reset()
+      }
+    , setElement: function(el) {
+        this.$el = el
+      }
+    , reset: function(segment) {
+        this._toid && clearTimeout(this._toid);
+
+        if (typeof segment == 'number') {
+          this.segment = segment
+        }
+        this._toid = setTimeout(function() {
+          slider.next()
+        }, this.timeout * 1000)
+      }
+    }
+
+    function resizeSlider(imgs) {
+      var screenWidth = Math.min(screen.width, screen.height, 640)
+        , ratio = screenWidth / 640
+        , x = function(i) { return Math.round(i * ratio) }
+        , size = {
+        width: x(sliderSize.width)
+      , height: x(sliderSize.height)
+      }
+
+      $('.slider-wrap, .slider-item').css({
+        width: size.width + 'px'
+      , height: size.height + 'px'
+      })
+
+      $('.slider').css({
+        width: (size.width * imgs.length) + 'px'
+      , height: size.height + 'px'
+      })
+
+      var items = $('.slider-item')
+
+      $.each(imgs, function(i, it) {
+        var links = $(items[i]).find('a')
+
+        $.each(it.links, function(j, link) {
+          $(links[j]).css({
+            width: x(link.width) + 'px'
+          , height: x(link.height) + 'px'
+          , top: x(link.top) + 'px'
+          , left: x(link.left) + 'px'
+          })
+        })
+      })
+    }
+
+    function setupSlider(imgs) {
+      var html = []
+
+      $.each(imgs, function(i, it) {
+        html.push('<div class="slider-item"><img src="' + it.img + '" />')
+
+        $.each(it.links, function(i, link) {
+          html.push('<a href="' + link.url + '">' + link.url + '</a>')
+        })
+
+        html.push('</div>')
+      })
+
+      $('.slider').html(html.join(''))
+      resizeSlider(imgs)
+      
+      slider.setElement($('.slider').flickable({
+        segments: 3
+      , onScroll: function(evt, segment) {
+          slider.reset(segment)
+        }
+      }))
+      slider.reset()
+    }
+
+    //$P.setup()
+    
+    $(function() {
+      setupSlider(images)
+    })
+
+    function getQueryParameter(qs) {
+      var s = location.href;
+      s = s.replace("?","?&").split("&");
+      var re = "";
+      for(i=1;i<s.length;i++)
+        if(s[i].indexOf(qs+"=") == 0)
+          re = s[i].replace(qs+"=","");
+              
+      return re;
+    }
+
+    var from = getQueryParameter( "from" )
+    if( "www"==from.toLowerCase() ) {
+      $.get( "http://42.121.106.226:777/moweb/track?from=www&siteId=1" );
+    }
+
+  </script>
+</body>
+</html>
